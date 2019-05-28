@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+    <title>TweetCool</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width,inital-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+</head>
+<form action="new-tweet" method="post">
+    Poster:<br>
+    <input type="text" name="poster"><br>
+    Tweet:<br>
+    <input type="text" name="tweet">
+    <p><input type="submit"></p>
+</form>
+<form method="get" action="tweetpage">
+    <div hidden>
+        <input type="number" name="limit" min="0" value="10" ><br>
+        <input type="number" name="offset" min="0" value="0"><br>
+        <input type="text" name="poster" value=""><br>
+        <input type="date" name="from" value="1900-01-01"><br>
+    </div>
+    <input type="submit" value="Tweets">
+</form>
+</html>
