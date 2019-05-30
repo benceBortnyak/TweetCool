@@ -35,6 +35,10 @@ public final class Tweet implements Serializable {
         return date;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return

@@ -9,17 +9,10 @@ import java.util.List;
 public class TweetService {
 
     public List<Tweet> search(int limit, int offset, String poster, Date from,List<Tweet> clonedTweetList){
-
-
-        System.out.println(clonedTweetList.size());
         List<Tweet> one = from(from,clonedTweetList);
-        System.out.println(one.size());
         List<Tweet> two = poster(poster,one);
-        System.out.println(two.size());
         List <Tweet> three = offset(offset,two);
-        System.out.println(three.size());
         List<Tweet> finalList = limit(limit,three);
-        System.out.println(finalList);
         return finalList;
     }
     private List<Tweet> from(Date date, List<Tweet> tweetList){
