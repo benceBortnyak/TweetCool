@@ -8,47 +8,64 @@ import java.util.List;
 
 public class TweetService {
 
-    public List<Tweet> search(int limit, int offset, String poster, Date from,List<Tweet> tweetList){
-        List<Tweet> clonedTweetList = tweetList;
-        List<Tweet> workingList = new ArrayList<>();
-        List<Tweet> nameFiltered = new ArrayList<>();
-        from(from,clonedTweetList,workingList);
-        poster(poster,workingList,nameFiltered);
-        offset(offset,nameFiltered);
-        limit(limit,nameFiltered);
+    public List<Tweet> search(int limit, int offset, String poster, Date from,List<Tweet> clonedTweetList){
 
-        return workingList;
+
+        System.out.println(clonedTweetList.size());
+        List<Tweet> one = from(from,clonedTweetList);
+        System.out.println(one.size());
+        List<Tweet> two = poster(poster,one);
+        System.out.println(two.size());
+        List <Tweet> three = offset(offset,two);
+        System.out.println(three.size());
+        List<Tweet> finalList = limit(limit,three);
+        System.out.println(finalList);
+        return finalList;
     }
-    private void from(Date date,List<Tweet> clonedList,List<Tweet> workingList){
-        for (int i = 0; i < clonedList.size() ; i++) {
-            if(date.before(clonedList.get(i).getDate())){
-                workingList.add(clonedList.get(i));
+    private List<Tweet> from(Date date, List<Tweet> tweetList){
+        List<Tweet> retList = new ArrayList<>();
+        for (Tweet tweet : tweetList) {
+            if(tweet.getDate().after(date)){
+                retList.add(tweet);
             }
         }
+        return retList;
     }
-    private void poster(String poster,List<Tweet> workingList,List<Tweet> nameFiltered){
-        if(poster.equals("")){
-            workingList.addAll(nameFiltered);
-        }else {
-            for (int i = 0; i < workingList.size(); i++) {
-                if (workingList.get(i).getAuthor().equals(poster)) {
-                    nameFiltered.add(workingList.get(i));
+
+    private List<Tweet> poster(String poster,List<Tweet> tweetList) {
+        List<Tweet> filteredList1 = new ArrayList<>();
+        if (poster.equals("")) {
+            return tweetList;
+        } else {
+            for (Tweet tweet : tweetList) {
+                if ((tweet.getAuthor().toLowerCase()).equals(poster.toLowerCase())) {
+                    filteredList1.add(tweet);
                 }
-
             }
+            return filteredList1;
+        }
+    }
+    private List<Tweet> offset(int offset,List<Tweet> tweetList){
+        List<Tweet> filteredList2 = new ArrayList<>();
+        if(!(tweetList.size()<=offset)){
+            for (int i = offset; i < tweetList.size(); i++) {
+                filteredList2.add(tweetList.get(i));
+            }
+        return filteredList2;
+        }else {
+            return tweetList;
         }
 
     }
-    private void offset(int offset,List<Tweet> nameFiltered){
-        for (int i = 0; i < offset ; i++) {
-            nameFiltered.remove(0);
-        }
-    }
-    private void limit(int limit, List<Tweet> nameFiltered){
-        if(limit < nameFiltered.size()) {
-            for (int i = 0; i < limit; i++) {
-                nameFiltered.remove(0);
+    private List<Tweet> limit(int limit,List<Tweet> tweetList){
+        List<Tweet> filteredList3 = new ArrayList<>();
+        if (!(tweetList.size()<=limit)){
+            for (int i = limit; i < tweetList.size(); i++) {
+                filteredList3.add(tweetList.get(i));
             }
+            return filteredList3;
+        }else {
+            return tweetList;
         }
     }
 }

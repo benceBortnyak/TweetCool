@@ -13,7 +13,7 @@ public final class Tweet implements Serializable {
         this.id = id;
         this.author = author;
         this.content = content;
-        this.date = new Date(System.currentTimeMillis());
+        this.date = new Date();
     }
 
     public Tweet(Integer id, String author, String content, Date date) {

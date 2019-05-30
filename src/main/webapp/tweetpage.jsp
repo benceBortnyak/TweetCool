@@ -30,7 +30,7 @@
     <form method="get" action="tweetpage">
         Limit(Number of results):<input type="number" name="limit" min="0" value="10" ><br>
         Offset(Results to skip): <input type="number" name="offset" min="0" value="0"><br>
-        Poster(Filter to show only one user's tweets)<input type="text" name="poster" ><br>
+        Poster(Filter to show only one user's tweets)<input type="text" name="poster"><br>
         From(Results posted after the given Time)<input type="date" name="from" value="1900-01-01"><br>
         <button type="submit">Send</button>
     </form>
