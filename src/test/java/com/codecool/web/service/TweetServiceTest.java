@@ -42,7 +42,7 @@ class TweetServiceTest {
         tweetList.add(new Tweet(9,"Poster guy3","asdkjasd",helper("2016-02-06")));
         tweetList.add(new Tweet(10,"Bence4","content",helper("2000-02-08")));
         tweetList.add(new Tweet(11,"Valaki4","content",helper("2002-02-08")));
-        tweetList.add(new Tweet(12,"Poster guy4","asdkjasd",helper("2016-02-06")));
+        tweetList.add(new Tweet(12,"Poster guy4","asdkjasd",helper("2019-02-06")));
     }
     @Test
     void search() {
@@ -57,6 +57,11 @@ class TweetServiceTest {
         Integer expectedLength = 10;
 
         assertEquals(expectedLength,length);
+
+        List<Tweet> tryList3 = tweetService.search(10,0,"",helper("2019-02-02"),tweetList);
+        Tweet expected = new Tweet(12,"Poster guy4","asdkjasd",helper("2019-02-06"));
+
+        assertEquals(tryList3.get(0).getId(),expected.getId());
 
 
 

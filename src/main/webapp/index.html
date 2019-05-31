@@ -6,14 +6,15 @@
     <meta name="viewport" content="width,inital-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-</head>
-<form action="new-tweet" method="post">
-    Poster:<br>
-    <input type="text" name="poster"><br>
-    Tweet:<br>
-    <input type="text" name="tweet">
-    <p><input type="submit"></p>
-</form>
+<div class="input-form">
+    <form action="new-tweet" method="post">
+        Poster:<br>
+        <input type="text" name="poster"><br>
+        Tweet:<br>
+        <input type="text" name="tweet">
+        <p><input type="submit"></p>
+    </form>
+</div>
 <form method="get" action="tweetpage">
     <div hidden>
         <input type="number" name="limit" min="0" value="10" ><br>

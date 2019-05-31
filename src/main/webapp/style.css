@@ -1,0 +1,12 @@
+.tweets{
+
+    width: 100%;
+}
+
+th,td{
+    border: 1px solid black;
+}
+
+th {
+    height: 50px;
+}
